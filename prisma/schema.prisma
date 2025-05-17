@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model brand {
+  id         Int       @id @default(autoincrement())
+  name       String?
+  createdAt  DateTime  @default(now()) @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+  product    product[]
+}
+
+model category {
+  id         Int       @id @default(autoincrement())
+  name       String?   @db.TinyText
+  createdAt  DateTime  @default(now()) @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+  product    product[]
+}
+
+model otp {
+  id     String @id
+  otp    String
+  expiry BigInt
+  user   user   @relation(fields: [id], references: [id], onUpdate: Restrict, map: "FK_OTP_USER")
+}
+
+model product {
+  id             Int              @id @default(autoincrement())
+  name           String?          @db.TinyText
+  createdAt      DateTime         @default(now()) @db.DateTime(0)
+  updatedAt      DateTime?        @db.DateTime(0)
+  insertedId     String
+  updatedId      String?
+  deleted        Int              @default(0)
+  image          String?          @db.TinyText
+  price          Int?
+  discount       Int?             @default(0)
+  number         Int?
+  categoryId     Int?
+  brandId        Int?
+  description    String?          @db.Text
+  brand          brand?           @relation(fields: [brandId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_product_brand")
+  category       category?        @relation(fields: [categoryId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_product_category")
+  product_color  product_color[]
+  product_detail product_detail[]
+  product_image  product_image[]
+  product_info   product_info[]
+
+  @@index([brandId], map: "brandId")
+  @@index([categoryId], map: "categoryId")
+}
+
+model product_color {
+  id         Int       @id @default(autoincrement())
+  productId  Int?
+  name       String
+  code       String
+  createdAt  DateTime  @default(now()) @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+  product    product?  @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_productColor_product")
+
+  @@index([productId], map: "productID")
+}
+
+model product_detail {
+  id         Int       @id @default(autoincrement())
+  productId  Int?
+  term       String?   @db.TinyText
+  definition String?   @db.TinyText
+  createdAt  DateTime  @default(now()) @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+  product    product?  @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_productDetail_product")
+
+  @@index([productId], map: "productId")
+}
+
+model product_image {
+  id         Int       @id @default(autoincrement())
+  productId  Int?
+  image      String?   @db.TinyText
+  createdAt  DateTime  @default(now()) @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+  product    product?  @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_productImage_product")
+
+  @@index([productId], map: "productId")
+}
+
+model product_info {
+  id         Int       @id @default(autoincrement())
+  productId  Int?
+  title      String?   @db.TinyText
+  subTitle   String?   @db.TinyText
+  logo       String?   @db.TinyText
+  createdAt  DateTime  @default(now()) @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+  product    product?  @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_productInfo_product")
+
+  @@index([productId], map: "productId")
+}
+
+model slide {
+  id         Int       @id @default(autoincrement())
+  image      String
+  alt        String
+  createdAt  DateTime  @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+}
+
+model user {
+  id         String    @id
+  firstname  String
+  lastname   String
+  fullName   String
+  phone      String
+  email      String
+  createdAt  DateTime  @default(now()) @db.DateTime(0)
+  updatedAt  DateTime? @db.DateTime(0)
+  insertedId String
+  updatedId  String?
+  deleted    Int       @default(0)
+  otp        otp?
+}
