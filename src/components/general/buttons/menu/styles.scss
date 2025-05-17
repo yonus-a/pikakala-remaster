@@ -1,0 +1,136 @@
+@use "@/styles/mixins.scss" as *;
+
+.menu-btn {
+  --animation-duration: 0.6s;
+  --animation-timing-function: ease-in-out;
+  --bar-color: #000000;
+  --btn-size: 25px;
+  /*
+  End Tweakable Presets 
+  */
+  --bar-spacing: calc(var(--btn-size) * 0.18);
+  background: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bar-spacing);
+  height: var(--btn-size);
+  justify-content: center;
+  padding: 0;
+  transition: calc(var(--animation-duration) / 2) transform
+    var(--animation-timing-function);
+  width: 24px;
+
+  span {
+    --bar-height: calc(var(--btn-size) * 0.09);
+    animation-duration: var(--animation-duration);
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    background: var(--bar-color);
+    height: var(--bar-height);
+    border-radius: 10em;
+    width: 100%;
+  }
+
+  span:nth-child(1) {
+    animation-name: to-hamburger-top;
+  }
+  span:nth-child(2) {
+    animation-name: to-hamburger-mid;
+  }
+  span:nth-child(3) {
+    animation-name: to-hamburger-btm;
+  }
+}
+
+@keyframes to-hamburger-top {
+  0% {
+    transform: translateY(calc(var(--bar-height) + var(--bar-spacing)))
+      rotate(-45deg);
+  }
+  50% {
+    transform: translateY(calc(var(--bar-height) + var(--bar-spacing)))
+      rotate(0);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes to-hamburger-mid {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes to-hamburger-btm {
+  0% {
+    transform: translateY(calc(-1 * (var(--bar-height) + var(--bar-spacing))))
+      rotate(-135deg);
+  }
+  50% {
+    transform: translateY(calc(-1 * (var(--bar-height) + var(--bar-spacing))))
+      rotate(0);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.menu-btn-input {
+  display: none;
+}
+
+.menu-btn-input:checked ~ .menu-btn {
+  transform: rotate(-90deg);
+  position: relative;
+  z-index: 20;
+
+  span:nth-child(1) {
+    animation-name: to-x-top;
+  }
+  span:nth-child(2) {
+    animation-name: to-x-mid;
+  }
+  span:nth-child(3) {
+    animation-name: to-x-btm;
+  }
+
+  @keyframes to-x-top {
+    0% {
+      transform: translateY(0) rotate(0);
+    }
+    50% {
+      transform: translateY(calc(var(--bar-height) + var(--bar-spacing)))
+        rotate(0);
+    }
+    100% {
+      transform: translateY(calc(var(--bar-height) + var(--bar-spacing)))
+        rotate(-45deg);
+    }
+  }
+  @keyframes to-x-mid {
+    50% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-45deg);
+    }
+  }
+  @keyframes to-x-btm {
+    0% {
+      transform: translateY(0) rotate(0);
+    }
+    50% {
+      transform: translateY(calc(-1 * (var(--bar-height) + var(--bar-spacing))))
+        rotate(0);
+    }
+    100% {
+      transform: translateY(calc(-1 * (var(--bar-height) + var(--bar-spacing))))
+        rotate(-135deg);
+    }
+  }
+}

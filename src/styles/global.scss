@@ -151,6 +151,14 @@ ul {
   border: none;
 }
 
+.icon-btn {
+  background-color: var(--clr-gray-350);
+  border-radius: 50%;
+  @include icon-size(17px);
+  @include flex-center;
+  @include size(44px);
+}
+
 .primary-btn {
   background-color: var(--clr-primary);
   color: var(--clr-white);

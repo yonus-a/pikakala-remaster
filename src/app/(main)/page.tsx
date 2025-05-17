@@ -5,7 +5,7 @@
 // import getSlides from "@server-actions/slides/getSlides";
 // import ProductSlider from "@components/product/slider";
 // import Container from "@components/general/container";
-import { excludeAllDetails } from "@/utils/general/server-action/excludeAllDetails";
+import { excludeAllDetails } from "@/utils/server-action/excludeAllDetails";
 import getSlides from "@/server-actions/slides/getSlides";
 import Container from "@/components/general/container";
 import Hero from "@/components/area/hero";

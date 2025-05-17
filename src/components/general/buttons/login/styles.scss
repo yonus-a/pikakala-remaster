@@ -1,0 +1,19 @@
+@use "@/styles/mixins.scss" as *;
+
+.login-btn {
+  @include flex-space-between;
+  @include size(auto, 50px);
+  border-radius: 10em;
+  padding: 6px;
+
+  a {
+    border-radius: 10em;
+    line-height: 1em;
+    padding: 1em 2em;
+
+    &.active,
+    &:hover {
+      background: var(--clr-white);
+    }
+  }
+}
