@@ -1,0 +1,96 @@
+@mixin on-pc {
+  @media (min-width: 1060px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: 1060px) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (max-width: 888px) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin take-all-space {
+  z-index: 9999999999;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+@mixin position-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-gap($gap) {
+  display: flex;
+  gap: $gap;
+}
+
+@mixin grid-gap($gap) {
+  display: grid;
+  gap: $gap;
+}
+
+@mixin m-p($m, $p) {
+  margin: $m;
+  padding: $p;
+}
+
+@mixin size($w, $h: "") {
+  width: $w;
+  height: $w;
+
+  @if $h != "" {
+    height: $h;
+  }
+}
+
+@mixin icon-size($w, $h: "") {
+  svg {
+    @include size($w, $h);
+  }
+}
+
+@mixin not-visible {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin visible {
+  visibility: visible;
+  opacity: 1;
+}
