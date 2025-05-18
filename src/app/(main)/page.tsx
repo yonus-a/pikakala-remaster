@@ -1,23 +1,13 @@
-// import ProductsCategorization from "@components/product/products-categorization";
-// import { excludeAllDetails } from "@utils/server-action/excludeAllDetails";
-// import getProducts from "@server-actions/product/getProducts";
-// import NewsArticles from "@components/area/news-articles";
-// import getSlides from "@server-actions/slides/getSlides";
-// import ProductSlider from "@components/product/slider";
-// import Container from "@components/general/container";
-import ProductsCategorization from "@/components/products/products-categorization";
+import ProductsCategorization from "@/components/products/categorization";
 import { excludeAllDetails } from "@/utils/server-action/excludeAllDetails";
 import getProducts from "@/server-actions/product/getProducts";
 import getSlides from "@/server-actions/slides/getSlides";
 import ProductSlider from "@/components/products/slider";
 import Container from "@/components/general/container";
+import ProductGrid from "@/components/products/grid";
 import Brands from "@/components/area/brands";
 import Hero from "@/components/area/hero";
 import Ads from "@/components/area/ads";
-// import ProductGrid from "@components/product/grid";
-// import Hero from "@components/area/hero";
-// import Brands from "@components/brands";
-// import Ads from "@components/area/ads";
 
 export default async function Page() {
   const slides = await getSlides({
@@ -29,6 +19,12 @@ export default async function Page() {
     orderBy: {
       createdAt: "desc",
     },
+    select: {
+      price: true,
+      image: true,
+      name: true,
+      id: true,
+    },
   });
 
   return (
@@ -36,20 +32,10 @@ export default async function Page() {
       <Hero slides={slides} />
       <Container>
         <ProductsCategorization />
-        <ProductSlider
-          products={newProducts}
-          title="محصولات جدید"
-        />
+        <ProductSlider products={newProducts} title="محصولات جدید" />
         <Ads />
         <Brands />
-        {/* 
         <ProductGrid products={newProducts} title="کالا های پرفروش" />
-        <ProductSlider
-          style={{ background: "var(--clr-red)" }}
-          products={newProducts}
-          title="محصولات جدید"
-        />
-        <NewsArticles /> */}
       </Container>
     </main>
   );
