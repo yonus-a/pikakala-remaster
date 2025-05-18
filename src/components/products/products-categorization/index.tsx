@@ -8,9 +8,9 @@ const categories = [
   { id: 1, image: "sex.png", text: "لوازم بهداشت جنسی" },
   { id: 2, image: "pad.png", text: "لولازم بهداشتی بانوان" },
   { id: 3, image: "razor.png", text: "لولازم بهداشتی آقایان" },
-  { id: 5, image: "perfume-men.png", text: "عطر ادکلن مردانه" },
+  { id: 4, image: "perfume-men.png", text: "عطر ادکلن مردانه" },
   { id: 5, image: "perfume-women.png", text: "عطر ادکلن زنانه" },
-  { id: 4, image: "skin-care.png", text: "مراقبت پوست" },
+  { id: 6, image: "skin-care.png", text: "مراقبت پوست" },
 ];
 
 export default function ProductsCategorization() {

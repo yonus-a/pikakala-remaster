@@ -1,5 +1,6 @@
 import CustomCartProvider from "@/components/providers/cart-provider";
 import WOWINIT from "@/components/general/WOWINIT";
+import PRICE from "@/components/general/PRICE";
 import Header from "@/components/area/header";
 import Footer from "@/components/area/footer";
 
@@ -23,6 +24,7 @@ export default function MainLayout({ children }: Readonly<Props>) {
       {children}
       <Footer />
       <WOWINIT />
+      <PRICE />
     </CustomCartProvider>
   );
 }

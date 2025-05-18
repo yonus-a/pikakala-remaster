@@ -1,5 +1,6 @@
 import Icon from "@/components/general/icon";
 import { product } from "@prisma/client";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "./styles.scss";
@@ -21,7 +22,9 @@ export default function ProductCard({ product }: Props) {
       </Link>
       <h3>{product.name}</h3>
       <div className="info">
-        <strong>{product.price} تومان</strong>
+        <strong>
+          <span className="price">{product.price}</span> تومان
+        </strong>
         <button type="button" className="btn cart">
           <Icon name="cart" />
         </button>

@@ -37,6 +37,22 @@
 }
 
 @font-face {
+  font-family: "IranSans";
+  src: url("/fonts/IRANSans_Medium.woff2") format("woff2"),
+    url("/fonts/IRANSans_Medium.woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IranNastaliq";
+  src: url("/fonts/IranNastaliq-2.woff2") format("woff2"),
+    url("/fonts/IranNastaliq-2.woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "myFont";
   src: url("/fonts/iranyekan-400.woff2") format("woff2"),
     url("/fonts/iranyekan-400.woff");
