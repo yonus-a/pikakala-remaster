@@ -1,0 +1,50 @@
+@use "@/styles/mixins.scss" as *;
+
+.products-categorization {
+  margin-top: var(--sections-margin-top);
+
+  ul {
+    @include flex-center;
+    text-align: center;
+    flex-wrap: wrap;
+    row-gap: 2.5em;
+    gap: 1em;
+
+    li {
+      @include flex-center;
+      width: 27.333%;
+
+      a {
+        background-color: var(--clr-gray-300);
+        @include grid-gap(1.5em);
+        justify-items: center;
+        border-radius: 1em;
+        padding: 1.5em 0;
+        font-size: 12px;
+        width: 100%;
+
+        img {
+          @include size(35px);
+          object-fit: scale-down;
+        }
+      }
+    }
+
+    @include on-pc {
+      padding: 0 2em;
+      gap: 2em;
+
+      li {
+        width: 12%;
+      }
+
+      li {
+        a {
+          img {
+            @include size(50px);
+          }
+        }
+      }
+    }
+  }
+}

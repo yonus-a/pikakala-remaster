@@ -35,9 +35,10 @@
   }
 
   @include on-tablet {
-    margin-bottom: 2em;
+    padding: 2em 0;
 
-    nav {
+    nav,
+    .logo {
       display: none;
     }
 
@@ -49,9 +50,9 @@
       background-color: var(--clr-white);
       box-shadow: 0 0 10px 0 rgba($color: #000000, $alpha: 0.3);
       animation: menu ease-in-out 500ms;
-      flex-direction: column-reverse;
       justify-content: space-between;
       animation-fill-mode: both;
+      flex-direction: column;
       position: absolute;
       align-items: start;
       padding: 2em;

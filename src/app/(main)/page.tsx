@@ -5,8 +5,11 @@
 // import getSlides from "@server-actions/slides/getSlides";
 // import ProductSlider from "@components/product/slider";
 // import Container from "@components/general/container";
+import ProductsCategorization from "@/components/products/products-categorization";
 import { excludeAllDetails } from "@/utils/server-action/excludeAllDetails";
+import getProducts from "@/server-actions/product/getProducts";
 import getSlides from "@/server-actions/slides/getSlides";
+import ProductSlider from "@/components/products/slider";
 import Container from "@/components/general/container";
 import Hero from "@/components/area/hero";
 // import ProductGrid from "@components/product/grid";
@@ -19,23 +22,24 @@ export default async function Page() {
     omit: excludeAllDetails,
   });
 
-  // const newProducts = await getProducts({
-  //   take: 10,
-  //   orderBy: {
-  //     createdAt: "desc",
-  //   },
-  // });
+  const newProducts = await getProducts({
+    take: 10,
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
   return (
     <main>
       <Hero slides={slides} />
       <Container>
-        {/* <ProductsCategorization />
+        <ProductsCategorization />
         <ProductSlider
           style={{ background: "var(--clr-blue)" }}
           products={newProducts}
           title="محصولات جدید"
         />
+        {/* 
         <Ads />
         <Brands />
         <ProductGrid products={newProducts} title="کالا های پرفروش" />
