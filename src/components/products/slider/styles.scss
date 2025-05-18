@@ -2,6 +2,7 @@
 
 .product-slider {
   margin-top: var(--sections-margin-top);
+  background: linear-gradient(45deg, #d9eafd, lavender, #cdc1ff);
   border-radius: 1em;
   padding: 1em 2em;
 
@@ -18,5 +19,9 @@
         fill: var(--clr-white);
       }
     }
+  }
+
+  .swiper-wrapper {
+    padding-bottom: 1em;
   }
 }

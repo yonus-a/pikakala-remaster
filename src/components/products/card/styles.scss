@@ -3,7 +3,7 @@
 .product-card {
   padding: 1em;
   border-radius: var(--default-radius);
-  box-shadow: 0 0 10px 0 rgba($color: #000000, $alpha: 0.3);
+  box-shadow: 0 5px 10px 0 rgba($color: #000000, $alpha: 0.2);
   background: var(--clr-white);
   @include grid-gap(1em);
   height: 100%;
@@ -27,7 +27,7 @@
     }
 
     .cart {
-      background-color: var(--clr-green);
+      background-color: #8967b3;
       display: flex;
       padding: 9px;
 

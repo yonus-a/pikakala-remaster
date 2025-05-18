@@ -10,20 +10,20 @@ export default function Ads() {
         <AnimatedItem animation="animate__zoomInRight">
           <Link href="/product/7">
             <Image
-              src="/images/ads/ads1.jpg"
+              src="/images/ads/ads1.png"
               alt="گوشی OPPO F19 PRO"
-              width={880}
               height={440}
+              width={880}
             />
           </Link>
         </AnimatedItem>
         <AnimatedItem animation="animate__zoomInLeft">
           <Link href="/product/11">
             <Image
-              src="/images/ads/ads2.jpg"
+              src="/images/ads/ads2.png"
               alt="بهترین موبایل OnePlus در هند"
-              width={880}
               height={440}
+              width={880}
             />
           </Link>
         </AnimatedItem>

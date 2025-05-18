@@ -11,6 +11,7 @@ import getProducts from "@/server-actions/product/getProducts";
 import getSlides from "@/server-actions/slides/getSlides";
 import ProductSlider from "@/components/products/slider";
 import Container from "@/components/general/container";
+import Brands from "@/components/area/brands";
 import Hero from "@/components/area/hero";
 import Ads from "@/components/area/ads";
 // import ProductGrid from "@components/product/grid";
@@ -36,12 +37,11 @@ export default async function Page() {
       <Container>
         <ProductsCategorization />
         <ProductSlider
-          style={{ background: "var(--clr-blue)" }}
           products={newProducts}
           title="محصولات جدید"
         />
         <Ads />
-        {/* <Brands /> */}
+        <Brands />
         {/* 
         <ProductGrid products={newProducts} title="کالا های پرفروش" />
         <ProductSlider
