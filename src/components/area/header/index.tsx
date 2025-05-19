@@ -5,6 +5,7 @@ import MenuBtn from "@/components/general/buttons/menu";
 import Container from "@/components/general/container";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/general/logo";
+import Icon from "@/components/general/icon";
 import Link from "next/link";
 import clsx from "clsx";
 import "./styles.scss";
@@ -16,6 +17,7 @@ export default function Header() {
     <header>
       <Container>
         <div className="header">
+          <Logo />
           <MenuBtn />
           <nav aria-label="Main Navigation">
             <Logo />
@@ -26,6 +28,7 @@ export default function Header() {
                   role="menuitem"
                   className={clsx(path === "/" && "active")}
                 >
+                  <Icon name="home" />
                   خانه
                 </Link>
               </li>
@@ -35,6 +38,7 @@ export default function Header() {
                   role="menuitem"
                   className={clsx(path === "/shop" && "active")}
                 >
+                  <Icon name="shop" />
                   فروشگاه
                 </Link>
               </li>
@@ -44,6 +48,7 @@ export default function Header() {
                   role="menuitem"
                   className={clsx(path === "/cart" && "active")}
                 >
+                  <Icon name="cart" />
                   سبد خرید
                 </Link>
               </li>
@@ -53,6 +58,7 @@ export default function Header() {
                   role="menuitem"
                   className={clsx(path === "/contact" && "active")}
                 >
+                  <Icon name="support" />
                   تماس باما
                 </Link>
               </li>
@@ -62,6 +68,7 @@ export default function Header() {
                   role="menuitem"
                   className={clsx(path === "/about" && "active")}
                 >
+                  <Icon name="help" />
                   درباره ما
                 </Link>
               </li>
