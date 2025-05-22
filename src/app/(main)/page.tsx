@@ -28,7 +28,7 @@ export default async function Page() {
   });
 
   return (
-    <main>
+    <>
       <Hero slides={slides} />
       <Container>
         <ProductsCategorization />
@@ -37,6 +37,6 @@ export default async function Page() {
         <Brands />
         <ProductGrid products={newProducts} title="کالا های پرفروش" />
       </Container>
-    </main>
+    </>
   );
 }

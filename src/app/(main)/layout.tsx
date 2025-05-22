@@ -21,7 +21,7 @@ export default function MainLayout({ children }: Readonly<Props>) {
   return (
     <CustomCartProvider>
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
       <WOWINIT />
       <PRICE />

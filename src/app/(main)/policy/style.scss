@@ -1,0 +1,16 @@
+@use "@/styles/mixins.scss" as *;
+
+.policy {
+  strong {
+    display: block;
+    margin-bottom: 2em;
+    font-weight: bold;
+  }
+
+  h2 {
+    margin: 1.5em 0;
+  }
+
+  margin-bottom: 8em;
+}
+ 

@@ -1,0 +1,5 @@
+@use "@/styles/mixins.scss" as *;
+
+.take-all-space {
+  @include take-all-space;
+}
