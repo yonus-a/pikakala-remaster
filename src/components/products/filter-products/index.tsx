@@ -1,3 +1,5 @@
+"use client";
+
 import FilterCategories from "@/components/filters/filter-categories";
 import FilterBrands from "@/components/filters/filter-brands";
 import DialogContainer from "../../general/dialog-container";
@@ -14,7 +16,7 @@ interface Props {
   maxPrice: number;
 }
 
-export default async function FilterProducts({ maxPrice = 0 }: Props) {
+export default function FilterProducts({ maxPrice }: Props) {
   const variants = {
     initial: { y: 150 },
     animate: { y: 0 },

@@ -21,8 +21,18 @@ export default async function Shop({ searchParams }: PageType) {
   return (
     <section aria-label="shop">
       <Container>
-        <ShopClient products={products} maxPrice={product?.price} />
-        <NextPagination total={totalProduct} page={filterData.page} />
+        <ShopClient
+          totalPages={Math.ceil(totalProduct / filterData.take)}
+          maxPrice={product?.price || 0}
+          currentPage={filterData.page}
+          totalProducts={totalProduct}
+          products={products}
+        />
+        <NextPagination
+          total={totalProduct}
+          page={filterData.page}
+          take={filterData.take}
+        />
       </Container>
     </section>
   );

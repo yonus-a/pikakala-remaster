@@ -1,28 +1,27 @@
 "use client";
 
-// done
-
 import { useRouter, useSearchParams } from "next/navigation";
 import Pagination from "@mui/material/Pagination";
+import { PaginationType } from "./type";
 import "./styles.scss";
-
-interface Props {
-  pageQuery?: string;
-  total: any;
-  page: any;
-}
 
 export default function NextPagination({
   pageQuery = "page",
   total,
   page,
-}: Props) {
+  take,
+}: PaginationType) {
   let params = new URLSearchParams([...(useSearchParams() || [])]);
   const router = useRouter();
 
   const handleChangePage = (event: any, newPage: number) => {
-    params.set(pageQuery, newPage.toString());
-    router.push("?" + params.toString());
+    if (newPage !== 1) {
+      params.set(pageQuery, newPage.toString());
+      router.push("?" + params.toString());
+    } else {
+      params.delete("page");
+    }
+
     push();
   };
 
@@ -35,10 +34,10 @@ export default function NextPagination({
       {total > 0 && (
         <div className="table-pagination">
           <Pagination
+            count={Math.ceil(total / +take)}
             onChange={handleChangePage}
             className="pagination"
-            count={+total}
-            page={+page}
+            page={+page + 1}
             dir="ltr"
           />
         </div>
