@@ -27,6 +27,10 @@
     }
   }
 
+  .left-side {
+    @include flex-align-center;
+  }
+
   @include on-tablet {
     flex-direction: row-reverse;
     padding: 1em 0;

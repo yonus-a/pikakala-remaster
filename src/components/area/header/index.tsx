@@ -3,6 +3,7 @@
 import LoginBtns from "@/components/general/buttons/login";
 import MenuBtn from "@/components/general/buttons/menu";
 import Container from "@/components/general/container";
+import CartBox from "@/components/widget/cart-box";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/general/logo";
 import Icon from "@/components/general/icon";
@@ -48,7 +49,7 @@ export default function Header() {
                   role="menuitem"
                   className={clsx(path === "/cart" && "active")}
                 >
-                  <Icon name="cart" />
+                  <Icon name="shopping-bag" />
                   سبد خرید
                 </Link>
               </li>
@@ -73,7 +74,10 @@ export default function Header() {
                 </Link>
               </li>
             </ul>
-            <LoginBtns />
+            <div className="left-side">
+              <LoginBtns />
+              <CartBox />
+            </div>
           </nav>
         </div>
       </Container>
