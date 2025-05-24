@@ -2,11 +2,11 @@
 
 import prisma from "@/lib/prisma";
 
-export default async function deleteAllOTPs(userId: string) {
+export default async function deleteAllOTPs(idcard: string) {
   try {
     return await prisma.otp.deleteMany({
       where: {
-        id: userId,
+        id: idcard,
       },
     });
   } catch (e) {

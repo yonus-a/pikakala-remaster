@@ -12,5 +12,11 @@
       @include flex-gap(1em);
       align-items: start;
     }
+
+    .policy {
+      margin-top: 1em;
+      display: flex;
+      gap: 1em;
+    }
   }
 }

@@ -14,16 +14,16 @@ export default function SendOtpButton() {
 
   const handleClick = async () => {
     try {
-      const username = watch("username");
-      const res: any = await sendOTP(username);
+      const phone = watch("phone");
+      const res: any = await sendOTP(phone);
 
       if (res?.error) {
-        setError("username", {
+        setError("phone", {
           message: res.error,
           type: "custom",
         });
       } else {
-        clearErrors("username");
+        clearErrors("phone");
         setFocus("otp");
 
         if (!isRunning) {

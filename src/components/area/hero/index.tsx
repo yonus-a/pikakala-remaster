@@ -9,7 +9,7 @@ import Image from "next/image";
 import "./style.scss";
 
 export default function Hero({ slides }: HeroType) {
-  var { swiperRef, handlePrev, handleNext } = useSwiperNavigation();
+  const { swiperRef, handlePrev, handleNext } = useSwiperNavigation();
 
   return (
     <section className="hero" aria-label="hero">

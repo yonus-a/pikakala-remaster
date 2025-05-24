@@ -54,32 +54,6 @@
         background-position: center;
         background-size: cover;
       }
-
-      // &::before {
-      //   transform: translate(15%, -15%);
-      //   background-image: url("/images/auth/right-corner.png");
-      //   background-position: center;
-      //   background-size: cover;
-      //   @include size(400px);
-      //   position: absolute;
-      //   z-index: -55;
-      //   content: "";
-      //   right: 0;
-      //   top: 0;
-      // }
-
-      // &::after {
-      //   transform: translate(-15%, 15%);
-      //   background-image: url("/images/auth/left-corner.png");
-      //   background-position: center;
-      //   background-size: cover;
-      //   @include size(400px);
-      //   position: absolute;
-      //   z-index: -55;
-      //   content: "";
-      //   bottom: 0;
-      //   left: 0;
-      // }
     }
   }
 }

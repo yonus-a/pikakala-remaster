@@ -1,6 +1,6 @@
 "use client";
 
-import { LoginSchema, LoginType } from "@/app/auth/signin/type";
+import { AuthorizeSchema, AuthorizeType } from "@/types/authorize";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "@/components/general/buttons/btn";
@@ -13,20 +13,20 @@ import "./style.scss";
 
 export default function Login() {
   const router = useRouter();
-  const methods = useForm<LoginType>({
-    resolver: zodResolver(LoginSchema),
+  const methods = useForm<AuthorizeType>({
+    resolver: zodResolver(AuthorizeSchema),
   });
 
-  const onSubmit = async (data: any) => {
-    const result: any = await signIn("credentials", {
+  const onSubmit = async (data: AuthorizeType) => {
+    const result = await signIn("credentials", {
       redirect: false,
       ...data,
     });
 
-    if (result.ok) {
+    if (result?.ok) {
       router.push("/");
     } else {
-      toast.error(result.error);
+      toast.error(result?.error || "");
     }
   };
 
@@ -34,7 +34,7 @@ export default function Login() {
     <div className="login">
       <FormProvider {...methods}>
         <form className="login" onSubmit={methods.handleSubmit(onSubmit)}>
-          <Input placeholder="ایمیل/شماره تماس" name="username" type="text" />
+          <Input placeholder="شماره تماس" name="phone" type="text" />
           <div className="input-group">
             <Input name="otp" placeholder="رمز ارسالی" />
             <SendOtpButton />

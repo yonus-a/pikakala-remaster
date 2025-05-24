@@ -134,16 +134,17 @@ model slide {
 }
 
 model user {
-  id         String    @id
-  firstname  String
-  lastname   String
-  fullName   String
-  phone      String
-  email      String
-  createdAt  DateTime  @default(now()) @db.DateTime(0)
-  updatedAt  DateTime? @db.DateTime(0)
-  insertedId String
-  updatedId  String?
-  deleted    Int       @default(0)
-  otp        otp?
+  id        String    @id
+  firstname String?
+  lastname  String?
+  fullName  String?
+  email     String?
+  birthday  DateTime? @db.DateTime(0)
+  address   String?
+  idcard    String?
+  createdAt DateTime  @default(now()) @db.DateTime(0)
+  updatedId String?
+  updatedAt DateTime? @db.DateTime(0)
+  deleted   Int       @default(0)
+  otp       otp?
 }

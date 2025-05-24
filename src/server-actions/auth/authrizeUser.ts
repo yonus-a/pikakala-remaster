@@ -1,30 +1,19 @@
 "use server";
 
-import getUserbyUsername from "../user/getUserByUsername";
-import { LoginType } from "@/app/auth/signin/type";
+import { AuthorizeType } from "@/types/authorize";
+import getUser from "../user/getUser";
 import bcryptjs from "bcryptjs";
 
-export default async function authorizeUser(data: LoginType) {
-  const { username, otp } = data;
+export default async function authorizeUser(data: AuthorizeType) {
+  const { otp, phone } = data;
 
-  const user: any = await getUserbyUsername(username, {
-    select: {
-      otp: true,
-      id: true,
-    },
+  const user: any = await getUser(phone, {
+    select: { id: true, otp: { select: { otp: true } } },
   });
 
-  if (!user) throw new Error("کاربری با مشخصات فوق یافت نشد");
+  const matchPass = await bcryptjs.compare(otp, user.otp.otp);
 
-  const dbOTP = user.otp;
-
-  if (Date.now() > dbOTP.expiry) {
-    throw new Error("رمز عبور منقضی شده است");
-  }
-
-  const matchOTP = await bcryptjs.compare(otp, dbOTP.otp);
-
-  if (!matchOTP) throw new Error("رمز موقت شما اشتباه است");
+  if (!matchPass) throw new Error("رمز کاربری شما اشتباه است");
 
   return user;
 }

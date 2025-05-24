@@ -1,31 +1,31 @@
 "use server";
 
-import getUserbyUsername from "@/server-actions/user/getUserByUsername";
+import { ServerActionReturnType } from "@/types/general";
 import sendOTPSMS from "@/utils/auth/sendOTPSMS";
+import upsertUser from "../user/upsertUser";
 import addOTP from "./addOPT";
 import crypto from "crypto";
 
-export default async function sendOTP(username: string) {
+export default async function sendOTP(
+  phone: string
+): Promise<ServerActionReturnType> {
   try {
-    if (!username) return { error: "نام کاربری را وارد کنید" };
+    if (!phone) return { ok: false, error: "شماره تماس را وارد کنید" };
 
-    const user = await getUserbyUsername(username, {
-      select: {
-        phone: true,
-        id: true,
-      },
-    });
+    const res = await upsertUser(phone);
 
-    if (!user) return { error: "کاربری با این مشخصات یافت نشد" };
+    if (res.ok) {
+      const otp = crypto.randomInt(1111, 9999).toString();
 
-    const otp = crypto.randomInt(1111, 9999).toString();
+      await sendOTPSMS({
+        receptor: phone,
+        token: otp,
+      });
 
-    await sendOTPSMS({
-      receptor: user.phone,
-      token: otp,
-    });
-
-    return await addOTP(user.id, otp);
+      return await addOTP(phone, otp);
+    } else {
+      return { ok: false, error: "کاربری ایجاد نشد !!" };
+    }
   } catch (e) {
     throw new Error("مشکلی در سرور پیش آمده لطفا مجددا تلاش نمایید !");
   }
