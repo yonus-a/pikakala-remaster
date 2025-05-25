@@ -1,3 +1,4 @@
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import SvgSprite from "@/components/general/svg-sprite";
 import { StrictMode } from "react";
 import "@/styles/global.scss";

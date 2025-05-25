@@ -110,6 +110,12 @@ a {
   color: var(--clr-black);
 }
 
+// section {
+//   h1 {
+//     margin-bottom: 2em;
+//   }
+// }
+
 section {
   h2 {
     font-size: 18px;
@@ -175,6 +181,11 @@ ul {
   @include size(44px);
 }
 
+.filters {
+  @include flex-gap(1em);
+  flex-wrap: wrap;
+}
+
 .primary-btn {
   background-color: var(--clr-primary);
   color: var(--clr-white);
@@ -185,6 +196,53 @@ ul {
   background-color: var(--clr-gray-100);
   color: var(--clr-black);
   padding: 1em;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1em 0 2em 0;
+  width: 100%;
+
+  thead {
+    background-color: var(--clr-red);
+    color: white;
+
+    th:first-child {
+      border-radius: 0 10px 0 0;
+    }
+
+    th:last-child {
+      border-radius: 10px 0 0 0;
+    }
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--clr-light);
+  }
+
+  th {
+    padding: 0.7em;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.3em;
+  }
+
+  td,
+  th {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  tr {
+    @include on-phone {
+      border: 1px solid #eee;
+      border: none !important;
+      margin-bottom: 1.5em;
+      border-radius: 1em;
+    }
+  }
 }
 
 // material ui

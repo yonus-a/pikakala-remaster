@@ -1,0 +1,16 @@
+@use "@/styles/mixins.scss" as *;
+
+.table-pagination {
+  @include flex-align-center;
+  margin-top: 2em;
+  gap: 1em;
+
+  .page-input {
+    @include size(60px, 30px);
+    background-color: var(--clr-gray-100);
+    border-radius: 5px;
+    padding: 0 0.5em;
+    font-size: 15px;
+    border: none;
+  }
+}

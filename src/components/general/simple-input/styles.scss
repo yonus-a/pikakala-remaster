@@ -1,0 +1,14 @@
+@use "@/styles/mixins.scss" as *;
+
+.labeld-input {
+  @include grid-gap(0.7em);
+
+  .custom-input {
+    border-radius: var(--default-radius);
+    background-color: var(--clr-gray-100);
+    font-size: 13px;
+    padding: 1em;
+    border: none;
+    width: 100%;
+  }
+}

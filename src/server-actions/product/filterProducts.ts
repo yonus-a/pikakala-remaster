@@ -1,8 +1,7 @@
-import filterProductBaseCategory from "../../utils/filters/product/filterProductBaseCategory";
-import filterProductBaseSearch from "../../utils/filters/product/filterProductBaseSearch";
-import filterProductBaseBrand from "../../utils/filters/product/filterProductBaseBrand";
-import filterProductBasePrice from "../../utils/filters/product/filterProductBasePrice";
-import { filterProductsType } from "./type";
+"use server";
+
+import filtersBaseDate from "@/utils/filters/general/filterDate";
+import { filterProductType } from "./type";
 import prisma from "@/lib/prisma";
 
 export default async function filterProducts({
@@ -10,33 +9,35 @@ export default async function filterProducts({
   page,
   take,
   ...options
-}: filterProductsType) {
+}: filterProductType) {
   try {
-    const filter = {
-      // ...filterProductBaseCategory(searchParams),
-      // ...filterProductBaseSearch(searchParams),
-      // ...filterProductBaseBrand(searchParams),
-      // ...filterProductBasePrice(searchParams),
+    const filters = {
+      ...filtersBaseDate(searchParams),
       deleted: 0,
     };
 
     const products = await prisma.product.findMany({
       skip: page * take,
-      where: filter,
       take,
       ...options,
+      where: {
+        ...filters,
+        ...(options.where || {}),
+      },
     });
 
-    const totalProduct = await prisma.product.count({
-      where: filter,
+    const countProduct = await prisma.product.count({
+      where: {
+        ...filters,
+        ...(options.where || {}),
+      },
     });
 
     return {
-      totalProduct,
       products,
+      countProduct,
     };
   } catch (e) {
-    console.log(e);
     throw new Error("مشکلی در سرور پیش آمده لطفا مجددا تلاش نمایید !");
   }
 }
