@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { boolean } from "zod";
 
 export interface InputProps {
   style?: CSSProperties;
@@ -8,6 +9,7 @@ export interface InputProps {
   defaultchcked?: any;
   errorMsg?: boolean;
   className?: string;
+  multiple?: boolean;
   noStyle?: boolean;
   label?: string;
   list?: string;

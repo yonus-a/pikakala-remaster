@@ -24,5 +24,4 @@ export const userTableInfo = [
     key: "createdAt",
     date: true,
   },
-  {},
 ];

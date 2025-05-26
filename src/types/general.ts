@@ -25,3 +25,8 @@ export type ImageList = Array<{
   alt: string;
   image: string;
 }>;
+
+export type selectDataType = {
+  name: string;
+  id: number;
+};

@@ -1,0 +1,18 @@
+@use "@/styles/mixins.scss" as *;
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+
+  .main-content {
+    flex: 1;
+  }
+
+  section {
+    padding-top: 3em;
+  }
+
+  @include on-tablet {
+    flex-direction: column-reverse;
+  }
+}

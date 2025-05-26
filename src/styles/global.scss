@@ -110,11 +110,11 @@ a {
   color: var(--clr-black);
 }
 
-// section {
-//   h1 {
-//     margin-bottom: 2em;
-//   }
-// }
+section {
+  h1 {
+    margin-bottom: 2em;
+  }
+}
 
 section {
   h2 {
@@ -193,7 +193,7 @@ ul {
 }
 
 .secondary-btn {
-  background-color: var(--clr-gray-100);
+  background-color: var(--clr-gray-200);
   color: var(--clr-black);
   padding: 1em;
 }
@@ -204,7 +204,7 @@ table {
   width: 100%;
 
   thead {
-    background-color: var(--clr-red);
+    background-color: var(--clr-blue);
     color: white;
 
     th:first-child {

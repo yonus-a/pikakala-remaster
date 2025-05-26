@@ -39,15 +39,12 @@ model otp {
 model product {
   id             Int              @id @default(autoincrement())
   name           String?          @db.TinyText
+  image          String
   createdAt      DateTime         @default(now()) @db.DateTime(0)
   updatedAt      DateTime?        @db.DateTime(0)
   insertedId     String
   updatedId      String?
   deleted        Int              @default(0)
-  image          String?          @db.TinyText
-  price          Int?
-  discount       Int?             @default(0)
-  number         Int?
   categoryId     Int?
   brandId        Int?
   description    String?          @db.Text
@@ -56,25 +53,23 @@ model product {
   product_color  product_color[]
   product_detail product_detail[]
   product_image  product_image[]
-  product_info   product_info[]
 
   @@index([brandId], map: "brandId")
   @@index([categoryId], map: "categoryId")
 }
 
 model product_color {
-  id         Int       @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   productId  Int?
-  name       String
-  code       String
-  createdAt  DateTime  @default(now()) @db.DateTime(0)
-  updatedAt  DateTime? @db.DateTime(0)
+  colorId    Int
+  createdAt  DateTime @default(now()) @db.DateTime(0)
   insertedId String
-  updatedId  String?
-  deleted    Int       @default(0)
-  product    product?  @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_productColor_product")
+  deleted    Int      @default(0)
+  color      color    @relation(fields: [colorId], references: [id], onUpdate: Restrict, map: "FK_productColor_color")
+  product    product? @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_productColor_product")
 
-  @@index([productId], map: "productID")
+  @@index([colorId], map: "FK_productColor_color")
+  @@index([productId], map: "FK_productColor_product")
 }
 
 model product_detail {
@@ -106,22 +101,6 @@ model product_image {
   @@index([productId], map: "productId")
 }
 
-model product_info {
-  id         Int       @id @default(autoincrement())
-  productId  Int?
-  title      String?   @db.TinyText
-  subTitle   String?   @db.TinyText
-  logo       String?   @db.TinyText
-  createdAt  DateTime  @default(now()) @db.DateTime(0)
-  updatedAt  DateTime? @db.DateTime(0)
-  insertedId String
-  updatedId  String?
-  deleted    Int       @default(0)
-  product    product?  @relation(fields: [productId], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "FK_productInfo_product")
-
-  @@index([productId], map: "productId")
-}
-
 model slide {
   id         Int       @id @default(autoincrement())
   image      String
@@ -147,4 +126,16 @@ model user {
   updatedAt DateTime? @db.DateTime(0)
   deleted   Int       @default(0)
   otp       otp?
+}
+
+model color {
+  id            Int             @id @default(autoincrement())
+  name          String
+  code          String
+  createdAt     DateTime        @default(now()) @db.DateTime(0)
+  updatedAt     DateTime?       @db.DateTime(0)
+  insertedId    String
+  updatedId     String?
+  deleted       Int             @default(0)
+  product_color product_color[]
 }

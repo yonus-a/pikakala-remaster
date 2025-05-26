@@ -1,0 +1,89 @@
+@use "@/styles/mixins.scss" as *;
+
+.admin-nav {
+  box-shadow: 0 0 10px 0 rgba($color: #000000, $alpha: 0.1);
+  background-color: var(--clr-white);
+  padding: 2em 1em;
+
+  .menu-btn {
+    display: none;
+  }
+
+  .logo {
+    img {
+      @include size(45px);
+    }
+  }
+
+  ul {
+    @include grid-gap(2em);
+    margin-top: 2em;
+
+    li {
+      a {
+        @include grid-gap(1em);
+        @include icon-size(24px);
+        justify-items: center;
+        font-size: 12px;
+
+        &.active {
+          span {
+            background: var(--clr-primary);
+          }
+        }
+
+        span {
+          background-color: var(--clr-gray-300);
+          @include flex-align-center;
+          border-radius: 10px;
+          padding: 1.5em;
+        }
+      }
+    }
+  }
+
+  @include on-tablet {
+    box-shadow: unset;
+    @include flex-space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 1em 2em;
+
+    .menu-btn {
+      display: flex;
+    }
+
+    ul {
+      padding: 7em 2em;
+      background-color: var(--clr-white);
+      box-shadow: 0 0 10px 0 rgba($color: #000000, $alpha: 0.3);
+      margin-top: 0;
+      position: absolute;
+      display: none;
+      height: 100%;
+      width: 80%;
+      right: 0;
+      top: 0;
+
+      li {
+        a {
+          span {
+            padding: 0;
+            background-color: transparent !important;
+          }
+
+          align-items: center;
+          grid-template-columns: 1fr 1fr;
+          justify-items: flex-start;
+          gap: 0.5em;
+        }
+      }
+    }
+
+    .menu-btn-input:checked ~ ul {
+      display: grid;
+      align-content: start;
+      justify-content: start;
+    }
+  }
+}

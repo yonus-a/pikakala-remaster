@@ -20,8 +20,6 @@ export default async function Page() {
       createdAt: "desc",
     },
     select: {
-      price: true,
-      image: true,
       name: true,
       id: true,
     },

@@ -14,8 +14,6 @@ export default async function Products({ searchParams }: PageType) {
       category: selectDataForShow,
       brand: selectDataForShow,
       createdAt: true,
-      number: true,
-      price: true,
       name: true,
       id: true,
     },
